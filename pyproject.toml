@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "individu8"
-version = "0.1.1"
+version = "0.1.2"
 description = "Deterministic hashing of Python dicts, lists, and JSON/YAML strings"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -42,10 +42,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/individu8"
-Repository = "https://github.com/yourusername/individu8"
-Issues = "https://github.com/yourusername/individu8/issues"
-Changelog = "https://github.com/yourusername/individu8/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/niklasskoldmark/individu8"
+Repository = "https://github.com/niklasskoldmark/individu8"
+Issues = "https://github.com/niklasskoldmark/individu8/issues"
+Changelog = "https://github.com/niklasskoldmark/individu8/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/individu8"]

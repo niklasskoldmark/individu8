@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-06-21
+
+### Fixed
+- Added type stub (`__init__.pyi`) so Pylance shows full function signature and docstring when using `import individu8`
+
 ## [0.1.1] - 2026-06-21
 
 ### Added

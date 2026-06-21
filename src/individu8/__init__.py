@@ -1,11 +1,12 @@
-"""individu8 — deterministic hashing of Python dicts, lists, and JSON/YAML strings."""
+# src/individu8/__init__.py
+# """individu8 — deterministic hashing of Python dicts, lists, and JSON/YAML strings."""
 
 import sys
 from typing import Any
 
 from individu8.core import individu8 as _individu8
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 
 class _Module(sys.modules[__name__].__class__):

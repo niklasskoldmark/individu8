@@ -35,7 +35,7 @@ uv add individu8
 ### Basic
 
 ```python
-from individu8 import individu8
+import individu8
 
 # hash a dict — returns exactly hash_length characters (default 14)
 individu8({"id": 1, "name": "Alice"})
