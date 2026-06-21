@@ -193,6 +193,13 @@ uv run ruff check src/ tests/
 
 See [CHANGELOG.md](CHANGELOG.md).
 
+## Powered by
+
+- [jsonpath-ng](https://github.com/pacman-packages/jsonpath-ng) — jsonpath filtering
+- [orjson](https://github.com/ijl/orjson) — fast JSON serialisation
+- [pyyaml](https://github.com/yaml/pyyaml) — YAML parsing
+
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
