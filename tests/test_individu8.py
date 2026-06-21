@@ -2,7 +2,7 @@
 
 import pytest
 
-from individu8 import individu8
+import individu8
 
 # ---------------------------------------------------------------------------
 # fixtures

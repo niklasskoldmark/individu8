@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "individu8"
-version = "0.1.0"
+version = "0.1.1"
 description = "Deterministic hashing of Python dicts, lists, and JSON/YAML strings"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -84,6 +84,9 @@ ignore= [
     "D213",     # conflicts with D212 (multi-line-summary-first-line)
 # Trailing comma missing — conflicts with ruff format
     "COM812",   # formatter handles trailing commas
+# __init__.py is intentionally non-trivial — callable module pattern
+    "INP001",  # if it fires
+    "D104",    # already ignored
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -109,7 +112,10 @@ ignore= [
 # Use of `assert` detected
     "S101",     # assert is correct and expected in tests
 ]
-
+"src/individu8/__init__.py" = [
+# callable module pattern requires class definition and sys.modules assignment
+    "RUF067",   # non-empty-init-module — intentional, enables import individu8; individu8(data)
+]
 
 [dependency-groups]
 dev = [

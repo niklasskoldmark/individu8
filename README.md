@@ -3,7 +3,7 @@
 Deterministic hashing of Python dicts, lists, and JSON/YAML strings.
 
 ```python
-from individu8 import individu8
+import individu8
 
 individu8({"id": 1, "name": "Alice"})
 # "FszF+jYmhYS17K"

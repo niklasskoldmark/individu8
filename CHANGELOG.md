@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-06-21
+
+### Added
+- Module is now callable — `import individu8; individu8(data)` works directly
+- `hash_format` parameter: `"base64"` (default), `"hex"`, `"uuid"` (UUID v8, RFC 9562)
+- `hash_bytes` parameter — expert alternative to `hash_length` for specifying digest size in bytes
+- UUID v8 support via `_digest_to_uuid8()` — deterministic, 122 bits of entropy, RFC 9562 compliant
+
+### Changed
+- `hash_length` now controls the exact character length of the returned string (default 14)
+  rather than digest size in bytes. **Breaking change** — hashes differ from 0.1.0.
+- All internal constants now use `_` prefix
+
+### Fixed
+- `_remove_by_jsonpath` now uses jsonpath_ng's built-in `filter` mechanism,
+  fixing compatibility with jsonpath_ng 1.8.0
+
 ## [0.1.0] - 2025-06-21
 
 ### Added
