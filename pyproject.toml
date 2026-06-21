@@ -1,0 +1,120 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "individu8"
+version = "0.1.0"
+description = "Deterministic hashing of Python dicts, lists, and JSON/YAML strings"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [
+  { name = "Niklas Sköldmark" },
+]
+keywords = [
+
+    "deterministic",       # the core property — someone looking for this will type it
+    "content-hash",        # the specific pattern/technique
+    "deduplication",       # the primary use case
+    "fingerprint",         # synonym for what it does
+    "blake2",              # someone looking for a blake2 hashing library
+    "jsonpath",            # people looking for jsonpath filtering might find it useful
+    "uuid-v8",             # novel — no other package does this
+    "etl",                 # the dlt/pipeline use case
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Utilities",
+]
+dependencies = [
+  "orjson>=3.9",
+  "jsonpath-ng>=1.6",
+  "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/individu8"
+Repository = "https://github.com/yourusername/individu8"
+Issues = "https://github.com/yourusername/individu8/issues"
+Changelog = "https://github.com/yourusername/individu8/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/individu8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+#indent-width = 2
+
+[tool.ruff.lint]
+select = ["ALL"]
+#select = ["E", "F", "UP", "B", "SIM", "I"]
+ignore= [
+# Dynamically typed expressions (typing.Any) are disallowed
+    "ANN401",   #  Any is legitimate — we handle arbitrary Python objects by design
+# `individu8` is too complex
+    "C901",     #  individu8() is intentionally comprehensive
+# Too many return statements
+    "PLR0911",  # _encode needs them
+# Too many branches
+    "PLR0912",  # by design
+# Too many arguments in function definition
+    "PLR0913",  # by design
+# Too many statements
+    "PLR0915",  # by design
+# Too many positional arguments
+    "PLR0917",  # by design
+# Missing copyright notice at top of file
+    "CPY001",   # not needed for MIT
+# Missing docstring in public module
+    "D100",     # core.py — documented in __init__.py
+# Incompatible docstring rules — must pick one of each pair
+    "D203",     # conflicts with D211 (no-blank-line-before-class)
+    "D213",     # conflicts with D212 (multi-line-summary-first-line)
+# Trailing comma missing — conflicts with ruff format
+    "COM812",   # formatter handles trailing commas
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+# File `tests/test_individu8.py` is part of an implicit namespace package
+    "INP001",   # tests don't need __init__.py
+# Missing type annotation for function argument
+    "ANN001",   # no type annotations needed in tests
+# Missing return type annotation for public function
+    "ANN201",   # no return type annotations needed in tests
+# Missing docstring in public function
+    "D103",     # no docstrings needed in test functions
+# Missing docstring in public module
+    "D100",     # no module docstring needed in test files
+# `pytest.raises()` block should contain a single simple statement
+    "PT012",    # pytest.raises can have multiple statements
+# Use specific rule codes when ignoring type issues
+    "PGH003",   # allow bare type: ignore in tests
+# `import` should be at the top-level of a file
+    "PLC0415",  # allow imports inside test functions
+# Magic value used in comparison
+    "PLR2004",  # magic values are fine in tests — they're expected output lengths
+# Use of `assert` detected
+    "S101",     # assert is correct and expected in tests
+]
+
+
+[dependency-groups]
+dev = [
+    "pip-audit>=2.10.1",
+    "pre-commit>=4.6.0",
+    "pytest>=9.1.1",
+    "ruff>=0.15.18",
+]

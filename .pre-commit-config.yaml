@@ -1,0 +1,14 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry: uv run ruff check src/ tests/
+        language: system
+        pass_filenames: false
+      - id: pytest
+        name: pytest
+        entry: uv run pytest --tb=short -q
+        language: system
+        pass_filenames: false
